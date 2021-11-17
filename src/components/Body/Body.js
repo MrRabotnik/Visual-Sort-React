@@ -27,7 +27,7 @@ function Body({ array, width, theme, setTheme }) {
                 <div onClick={() => {setTheme("theme_1")}} id="theme_1" className="themes"><h4>Terminal</h4></div>
                 <div onClick={() => {setTheme("theme_2")}} id="theme_2" className="themes"><h4>Windows</h4></div>
                 <div onClick={() => {setTheme("theme_3")}} id="theme_3" className="themes"><h4>First Test</h4></div>
-                <div onClick={() => {setTheme("theme_2")}} id="theme_4" className="themes"><h4>Second Test</h4></div>
+                <div onClick={() => {setTheme("theme_4")}} id="theme_4" className="themes"><h4>Second Test</h4></div>
             </div>
         </section>
     );
