@@ -1,3 +1,5 @@
+import SwapElements from "./SwapElements";
+
 let bubbleSorted = false;
 let allTrue = false;
 
@@ -9,9 +11,7 @@ const BubbleSort = (array, sorting, updateArray) => {
 
             if (array[i].rndNum > array[i + 1].rndNum) {
                 allTrue = false;
-                let arrItem = array[i + 1]
-                array[i + 1] = array[i];
-                array[i] = arrItem
+                array = SwapElements(array, i, i + 1)
                 updateArray(array)
             }
         }
