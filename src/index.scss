@@ -1,0 +1,515 @@
+body {
+    margin: 0;
+    height: 100vh;
+}   
+
+#root{
+    height: 100%;
+    background-color: transparent;
+}
+
+
+@import 'variables.scss';
+@import 'theme.scss';
+
+/*////////////////////////////////////////////////////////////
+/////////////////////// GLOBAL STYLES ////////////////////////
+////////////////////////////////////////////////////////////*/
+
+body{
+    margin: 0;
+    font-family: $font-family;
+    user-select: none;
+    color: $main-color-t2;
+    &.theme_1{
+        @include bodyStyling($terminal: true, $windows-theme: false, $test-1: false, $test-2: false);
+    }
+
+    &.theme_2{
+        @include bodyStyling($terminal: false, $windows-theme: true, $test-1: false, $test-2: false);
+    }
+
+    &.theme_3{
+        @include bodyStyling($terminal: false, $windows-theme: false, $test-1: true, $test-2: false);
+    }
+
+    &.theme_4{
+        @include bodyStyling($terminal: false, $windows-theme: false, $test-1: false, $test-2: true);
+    }
+}
+
+h3{
+    font-size: $h3-font-size;
+}
+
+h4{
+    font-size: $h4-font-size;
+}
+
+/*////////////////////////////////////////////////////////////
+/////////////////////// MAIN PAGE STYLES /////////////////////
+////////////////////////////////////////////////////////////*/
+
+header{
+    height: $footer-header-height;
+    display: flex;
+    align-items: center;
+
+    &.theme_1{
+        @include headerFooterStyling($terminal: true, $windows-theme: false, $test-1: false, $test-2: false);
+    }
+
+    &.theme_2{
+        @include headerFooterStyling($terminal: false, $windows-theme: true, $test-1: false, $test-2: false);
+    }
+
+    &.theme_3{
+        @include headerFooterStyling($terminal: false, $windows-theme: false, $test-1: true, $test-2: false);
+    }
+
+    &.theme_4{
+        @include headerFooterStyling($terminal: false, $windows-theme: false, $test-1: false, $test-2: true);
+    }
+
+    #generate_new_array {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 20%;
+        height: 100%;
+
+        &.theme_1{
+            @include border-right-color($terminal: true, $windows-theme: false, $test-1: false, $test-2: false);
+        }
+
+        &.theme_2{
+            @include border-right-color($terminal: false, $windows-theme: true, $test-1: false, $test-2: false);
+        }
+
+        &.theme_3{
+        @include border-right-color($terminal: false, $windows-theme: false, $test-1: true, $test-2: false);
+    }
+
+    &.theme_4{
+        @include border-right-color($terminal: false, $windows-theme: false, $test-1: false, $test-2: true);
+    }
+
+        h3{
+            margin: 0;
+            
+            &:hover{
+                color: $button-hover-color;
+                cursor: pointer;
+            }
+        }
+    }
+
+    #change_array_size_and_speed{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 30%;
+        height: 100%;
+
+        &.theme_1{
+            @include border-right-color($terminal: true, $windows-theme: false, $test-1: false, $test-2: false);
+        }
+
+        &.theme_2{
+            @include border-right-color($terminal: false, $windows-theme: true, $test-1: false, $test-2: false);
+        }
+        
+        &.theme_3{
+            @include border-right-color($terminal: false, $windows-theme: false, $test-1: true, $test-2: false);
+        }
+
+        &.theme_4{
+            @include border-right-color($terminal: false, $windows-theme: false, $test-1: false, $test-2: true);
+        }
+
+        input{
+            margin-left: 1vw;
+            width: 40%;
+        }
+
+    }
+
+    #sorting_algorithms{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 30%;
+        height: 100%;
+
+        &.theme_1{
+            @include border-right-color($terminal: true, $windows-theme: false, $test-1: false, $test-2: false);
+        }
+
+        &.theme_2{
+            @include border-right-color($terminal: false, $windows-theme: true, $test-1: false, $test-2: false);
+        }
+
+        &.theme_3{
+            @include border-right-color($terminal: false, $windows-theme: false, $test-1: true, $test-2: false);
+        }
+
+        &.theme_4{
+            @include border-right-color($terminal: false, $windows-theme: false, $test-1: false, $test-2: true);
+        }
+
+        #sorting_algorithm_select{
+            margin-left: 1vw;
+            font-size: $h4-font-size;
+            outline: none;
+            padding: .5vw;
+
+            &.theme_1{
+                @include sorting-algorithm-select($terminal: true, $windows-theme: false, $test-1: false, $test-2: false);
+            }
+
+            &.theme_2{
+                @include sorting-algorithm-select($terminal: false, $windows-theme: true, $test-1: false, $test-2: false);
+            }
+
+            &.theme_3{
+                @include sorting-algorithm-select($terminal: false, $windows-theme: false, $test-1: true, $test-2: false);
+            }
+
+            &.theme_4{
+                @include sorting-algorithm-select($terminal: false, $windows-theme: false, $test-1: false, $test-2: true);
+            }
+        }
+    }
+
+    #start_sort{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 20%;
+        height: 100%;
+
+        &:hover{
+            color: $button-hover-color;
+            cursor: pointer;
+        }
+    }
+}
+
+
+section{
+    height: calc(100% - #{$footer-header-height});
+    padding-top: 1vw;
+    box-sizing: border-box;
+    position: relative;
+
+    &.theme_1{
+        @include section-styling($terminal: true, $windows-theme: false, $test-1: false, $test-2: false);
+    }
+
+    &.theme_2{
+        @include section-styling($terminal: false, $windows-theme: true, $test-1: false, $test-2: false);
+    }
+
+    &.theme_3{
+        @include section-styling($terminal: false, $windows-theme: false, $test-1: true, $test-2: false);
+    }
+
+    &.theme_4{
+        @include section-styling($terminal: false, $windows-theme: false, $test-1: false, $test-2: true);
+    }
+    
+    #sorting_array_container{
+        width: 80%;
+        margin: auto;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+
+        .visual_array_item{
+            text-align: center;
+            padding-top: 1vw;
+            font-size: 1vw;
+            text-shadow: 0.1vw 0.1vw black;
+
+            &.theme_1{
+                @include single-item-styling($terminal: true, $windows-theme: false, $test-1: false, $test-2: false);
+            }
+
+            &.theme_2{
+                @include single-item-styling($terminal: false, $windows-theme: true, $test-1: false, $test-2: false);
+            }
+
+            &.theme_3{
+                @include single-item-styling($terminal: false, $windows-theme: false, $test-1: true, $test-2: false);
+            }
+
+            &.theme_4{
+                @include single-item-styling($terminal: false, $windows-theme: false, $test-1: false, $test-2: true);
+            }
+        }
+    }
+
+    #change_sorting_speed{
+        position: absolute;
+        bottom: 3%;
+        left: 1%;
+        width: 30%;
+        text-align: center;
+
+        h3{
+            margin: 0;
+        }
+
+        input{
+            width: 100%;
+        }
+    }
+
+    .creat_array_input_container{
+        position: absolute;
+        bottom: 3%;
+        left: 33%;
+        width: 27%;
+        text-align: center;
+
+        h3{
+            margin: 0;
+            margin-bottom: .5vw;
+        }
+
+        input{
+            width: 100%;
+        }
+    }
+
+    .themes_container{
+        position: absolute;
+        bottom: 4%;
+        right: 1%;
+        display: flex;
+
+        & > div{
+            margin: 0 1vw;
+            text-align: center;
+
+            &:hover{
+                color: $button-hover-color;
+            }
+        }
+
+        .themes{
+            width: 8vw;
+            height: 3vw;
+        }
+    }
+}
+
+
+/*////////////////////////////////////////////////////////////
+/////////////////////// MEDIA QUERIES ////////////////////////
+////////////////////////////////////////////////////////////*/
+
+@media only screen and (max-width: 600px){
+    h3{
+        font-size: 2vw;
+    }
+    header{
+        flex-wrap: wrap;
+        height: 3 * $footer-header-height;
+
+        #generate_new_array {
+            width: calc(50% - 0.3vw);
+            height: 50%;
+            &.theme_1{
+                @include border-right-color($terminal: true, $windows-theme: false, $test-1: false, $test-2: false);
+            }
+
+            &.theme_2{
+                @include border-right-color($terminal: false, $windows-theme: true, $test-1: false, $test-2: false);
+            }
+
+            &.theme_3{
+                @include border-right-color($terminal: false, $windows-theme: false, $test-1: true, $test-2: false);
+            }
+
+            &.theme_4{
+                @include border-right-color($terminal: false, $windows-theme: false, $test-1: false, $test-2: true);
+            }
+        }
+
+        #change_array_size_and_speed{
+            width: calc(50% - 0.3vw);
+            height: 50%;
+            &.theme_1{
+                @include border-right-color($terminal: true, $windows-theme: false, $test-1: false, $test-2: false);
+            }
+
+            &.theme_2{
+                @include border-right-color($terminal: false, $windows-theme: true, $test-1: false, $test-2: false);
+            }
+
+            &.theme_3{
+                @include border-right-color($terminal: false, $windows-theme: false, $test-1: true, $test-2: false);
+            }
+
+            &.theme_4{
+                @include border-right-color($terminal: false, $windows-theme: false, $test-1: false, $test-2: true);
+            }
+            
+        }
+
+        #sorting_algorithms{
+            width: calc(50% - 0.3vw);
+            height: 50%;
+
+            #sorting_algorithm_select{
+                margin-left: 2vw;
+                font-size: 1.8vw;
+            }
+        }
+
+        #start_sort{
+            width: calc(50% - 0.3vw);
+            height: 50%;
+        }
+    }
+
+    section {
+        height: calc(100% - 3 * #{$footer-header-height});
+    }
+}
+
+@media only screen and (max-width: 500px){
+    h3{
+        font-size: 2.5vw;
+    }
+
+    header{
+        flex-wrap: wrap;
+        height: 7 * $footer-header-height;
+
+        #generate_new_array {
+            width: 100%;
+            border-right: 0;
+            height: 25%;
+
+            &.theme_1{
+                @include border-right-color($terminal: true, $windows-theme: false, $test-1: false, $test-2: false);
+            }
+
+            &.theme_2{
+                @include border-right-color($terminal: false, $windows-theme: true, $test-1: false, $test-2: false);
+            }
+
+            &.theme_3{
+                @include border-right-color($terminal: false, $windows-theme: false, $test-1: true, $test-2: false);
+            }
+
+            &.theme_4{
+                @include border-right-color($terminal: false, $windows-theme: false, $test-1: false, $test-2: true);
+            }
+        }
+
+        #change_array_size_and_speed{
+            width: 100%;
+            border-right: 0;
+            height: 25%;
+
+            &.theme_1{
+                @include border-right-color($terminal: true, $windows-theme: false, $test-1: false, $test-2: false);
+            }
+
+            &.theme_2{
+                @include border-right-color($terminal: false, $windows-theme: true, $test-1: false, $test-2: false);
+            }
+
+            &.theme_3{
+                @include border-right-color($terminal: false, $windows-theme: false, $test-1: true, $test-2: false);
+            }
+
+            &.theme_4{
+                @include border-right-color($terminal: false, $windows-theme: false, $test-1: false, $test-2: true);
+            }
+        }
+
+        #sorting_algorithms{
+            width: 100%;
+            border-right: 0;
+            height: 25%;
+
+            &.theme_1{
+                @include border-right-color($terminal: true, $windows-theme: false, $test-1: false, $test-2: false);
+            }
+
+            &.theme_2{
+                @include border-right-color($terminal: false, $windows-theme: true, $test-1: false, $test-2: false);
+            }
+
+            &.theme_3{
+                @include border-right-color($terminal: false, $windows-theme: false, $test-1: true, $test-2: false);
+            }
+
+            &.theme_4{
+                @include border-right-color($terminal: false, $windows-theme: false, $test-1: false, $test-2: true);
+            }
+
+            #sorting_algorithm_select{
+                margin-left: 2vw;
+                font-size: 1.8vw;
+            }
+        }
+
+        #start_sort{
+            width: 100%;
+            border-right: 0;
+            height: 25%;
+
+            &.theme_1{
+                @include border-right-color($terminal: true, $windows-theme: false, $test-1: false, $test-2: false);
+            }
+
+            &.theme_2{
+                @include border-right-color($terminal: false, $windows-theme: true, $test-1: false, $test-2: false);
+            }
+
+            &.theme_3{
+                @include border-right-color($terminal: false, $windows-theme: false, $test-1: true, $test-2: false);
+            }
+
+            &.theme_4{
+                @include border-right-color($terminal: false, $windows-theme: false, $test-1: false, $test-2: true);
+            }
+        }
+    }
+
+    section {
+        height: calc(100% - 7 * #{$footer-header-height});
+    }
+
+    footer {
+        height: 1 * $footer-header-height;
+    }
+}
+
+@media only screen and (max-width: 400px){
+    h3{
+        font-size: 3vw;
+    }
+
+    header{
+        height: 10 * $footer-header-height;
+
+        #sorting_algorithms{
+
+            #sorting_algorithm_select{
+                font-size: 2.5vw;
+            }
+        }
+
+    }
+
+    section {
+        height: calc(100% - 10 * #{$footer-header-height});
+    }
+
+}
