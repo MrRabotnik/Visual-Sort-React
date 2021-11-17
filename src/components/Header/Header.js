@@ -7,20 +7,22 @@ function Header({ theme, createArray, setSize, sortingAlgorithms, array, sorting
 
     function sort() {
         if (sorting) return
-        
+
         sorting = true
         if (sortingAlgorithm === "bubble") {
             sortingAlgorithms.BubbleSort(array, sorting, updateArray)
         } else if (sortingAlgorithm === "merge") {
-            alert("Work on progress!")
+            updateArray(sortingAlgorithms.MergeSort(array))
+            sorting = false
         } else if (sortingAlgorithm === "heap") {
-            alert("Work on progress!")
+            sortingAlgorithms.HeapSort(array, sorting, updateArray)
         } else if (sortingAlgorithm === "quick") {
-            alert("Work on progress!")
+            updateArray(sortingAlgorithms.QuickSort(array, 0, array.length - 1, sorting, updateArray))
+            sorting = false
         } else if (sortingAlgorithm === "selection") {
-            alert("Work on progress!")
+            sortingAlgorithms.SelectionSort(array, sorting, updateArray)
         } else if (sortingAlgorithm === "insertion") {
-            alert("Work on progress!")
+            sortingAlgorithms.InsertionSort(array, sorting, updateArray)
         }
     }
 

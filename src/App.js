@@ -2,33 +2,44 @@ import React, { Component } from "react";
 import Header from "./components/Header/Header";
 import Body from "./components/Body/Body";
 import BubbleSort from "./components/BubbleSort";
-import SwapElements from "./components/SwapElements";
+import MergeSort from "./components/MergeSort"
+import HeapSort from "./components/HeapSort"
+import SelectionSort from "./components/SelectionSort"
+import InsertionSort from "./components/InsertionSort"
+import QuickSort from "./components/QuickSort"
 
 class App extends Component {
     constructor() {
         super();
         this.state = {
             array: [],
-            arraySize: 30,
+            arraySize: 7,
             elementWidth: 0,
             sortingSpeedMax: 0,
             sorting: false,
             time: this.sortingSpeedMax - "speed",
             theme: "theme_2",
+            bgColor: {
+                staticColor : "#5959ad",
+                checkingColor : "orange",
+                wrongColor : "crimson",
+                allCorrectColor : "green",
+                correctedColor : "yellowgreen"
+            },
         };
     }
 
-    staticColor = "#5959ad";
-    checkingColor = "orange";
-    wrongColor = "crimson";
-    allCorrectColor = "green";
-    correctedColor = "yellowgreen";
+    
     array_max_number_limit = 181;
     array_min_number_limit = 20;
     dom_item_height_multiplier = 90 / (this.array_max_number_limit + 20);
     sortingAlgorithms = {
         BubbleSort,
-        SwapElements
+        MergeSort,
+        HeapSort,
+        SelectionSort,
+        InsertionSort,
+        QuickSort
     };
 
     componentDidMount() {
@@ -96,7 +107,7 @@ class App extends Component {
                     width={this.state.elementWidth}
                     theme={this.state.theme}
                     setTheme={this.setTheme}
-                    sortingAlgorithms={this.sortingAlgorithms}
+                    // sortingAlgorithms={this.sortingAlgorithms}
                     sorting={this.state.sorting}
                 />
             </React.Fragment>

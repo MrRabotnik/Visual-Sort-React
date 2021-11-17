@@ -1,15 +1,15 @@
 import ArrayElement from "../ArrayElement/ArrayElement";
 import "./body.scss";
 
-function Body({ array, width, theme, setTheme }) {
+function Body({ array, width, theme, setTheme, bgColor }) {
     return (
         <section id="sorting_array_section" className={theme}>
             <div id="sorting_array_container" className={theme}>
                 {array.map((el, index) => {
                     if(array.length <= 30){
-                        return <ArrayElement key={index} num={el.rndNum} height={el.height} width={width} theme={theme} />
+                        return <ArrayElement key={index} num={el.rndNum} height={el.height} width={width} theme={theme} bgColor={bgColor} />
                     }else{
-                        return <ArrayElement key={index} num={""} height={el.height} width={width} theme={theme} />
+                        return <ArrayElement key={index} num={""} height={el.height} width={width} theme={theme} bgColor={bgColor} />
                     }
                 })}
             </div>
