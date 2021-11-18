@@ -34,7 +34,7 @@ function Header({ theme, createArray, setSize, sortingAlgorithms, array, sorting
 
             <div id="change_array_size_and_speed" className={theme}>
                 <h3>Change Array Size</h3>
-                <input type="range" name="" id="array_range" min="4" max="400" step="1" defaultValue="30" onChange={e => { setSize(e.target.value) }} />
+                <input type="range" disabled={ sorting ? true : false} name="" id="array_range" min="4" max="400" step="1" defaultValue="30" onChange={e => { setSize(e.target.value) }} />
             </div>
 
             <div id="sorting_algorithms" className={theme}>

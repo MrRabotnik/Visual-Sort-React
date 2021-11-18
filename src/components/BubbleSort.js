@@ -53,7 +53,6 @@ const BubbleSort = async (array, sorting, updateArray, bgColors, timer, time) =>
         el.bgColor = bgColors.allCorrectColor
     });
 
-    // console.log(array)
     updateArray(array)
 
     sortedCount = 1;

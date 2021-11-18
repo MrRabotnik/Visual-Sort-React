@@ -13,7 +13,7 @@ class App extends Component {
         super();
         this.state = {
             array: [],
-            arraySize: 7,
+            arraySize: 30,
             elementWidth: 0,
             sorting: false,
             theme: "theme_2",
@@ -41,7 +41,7 @@ class App extends Component {
         QuickSort
     };
 
-
+    timer = ms => new Promise(res => setTimeout(res, ms));
 
     componentDidMount() {
         this.createArray();
@@ -107,7 +107,7 @@ class App extends Component {
                     sorting={this.state.sorting}
                     updateArray={this.updateArray}
                     bgColors={this.state.bgColors}
-                    timer={this.state.timer}
+                    timer={this.timer}
                     time={this.state.time}
                 />
                 <Body
