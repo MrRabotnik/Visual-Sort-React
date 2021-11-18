@@ -19,6 +19,8 @@ const HeapSort = async (arr, sorting, updateArray, bgColors, timer, time) => {
             }
 
             if (leftChildNode > rightChildNode && leftChildNode > parentNode) {
+                itemColoringForHeapSort(i, 2 * i + 1, bgColors.staticColor, bgColors.staticColor, array);
+                updateArray(array)
                 if (2 * i + 2 !== arrayLength) {
                     array[2 * i + 2].bgColor = bgColors.staticColor;
                     await timer(time);
@@ -37,6 +39,8 @@ const HeapSort = async (arr, sorting, updateArray, bgColors, timer, time) => {
                 updateArray(array)
 
             } else if (rightChildNode >= leftChildNode && rightChildNode > parentNode) {
+                itemColoringForHeapSort(i, 2 * i + 1, bgColors.staticColor, bgColors.staticColor, array);
+                updateArray(array)
                 if (2 * i + 2 !== arrayLength) {
                     array[2 * i + 2].bgColor = bgColors.staticColor;
                     await timer(time);
