@@ -13,11 +13,21 @@ function Header({ theme, createArray, setSize, sortingAlgorithms, array, sorting
             sortingAlgorithms.BubbleSort(array, sorting, updateArray, bgColors, timer, time)
         } else if (sortingAlgorithm === "merge") {
             updateArray(sortingAlgorithms.MergeSort(array))
+            array.forEach(el => {
+                el.bgColor = bgColors.allCorrectColor
+            });
+
+            updateArray(array);
             sorting = false
         } else if (sortingAlgorithm === "heap") {
             sortingAlgorithms.HeapSort(array, sorting, updateArray, bgColors, timer, time)
         } else if (sortingAlgorithm === "quick") {
             updateArray(sortingAlgorithms.QuickSort(array, 0, array.length - 1, bgColors, timer, time))
+            array.forEach(el => {
+                el.bgColor = bgColors.allCorrectColor
+            });
+
+            updateArray(array);
             sorting = false
         } else if (sortingAlgorithm === "selection") {
             sortingAlgorithms.SelectionSort(array, sorting, updateArray, bgColors, timer, time)
