@@ -19,8 +19,6 @@ const HeapSort = async (arr, sorting, updateArray, bgColors, timer, time) => {
             }
 
             if (leftChildNode > rightChildNode && leftChildNode > parentNode) {
-                itemColoringForHeapSort(i, 2 * i + 1, bgColors.staticColor, bgColors.staticColor, array);
-                updateArray(array)
                 if (2 * i + 2 !== arrayLength) {
                     array[2 * i + 2].bgColor = bgColors.staticColor;
                     await timer(time);
@@ -30,6 +28,7 @@ const HeapSort = async (arr, sorting, updateArray, bgColors, timer, time) => {
                 await timer(time);
                 updateArray(array)
                 array = SwapElements(array, i, 2 * i + 1);
+                updateArray(array)
                 itemColoringForHeapSort(i, 2 * i + 1, bgColors.correctedColor, bgColors.correctedColor, array);
                 await timer(time);
                 updateArray(array)
@@ -38,8 +37,6 @@ const HeapSort = async (arr, sorting, updateArray, bgColors, timer, time) => {
                 updateArray(array)
 
             } else if (rightChildNode >= leftChildNode && rightChildNode > parentNode) {
-                itemColoringForHeapSort(i, 2 * i + 1, bgColors.staticColor, bgColors.staticColor, array);
-                updateArray(array)
                 if (2 * i + 2 !== arrayLength) {
                     array[2 * i + 2].bgColor = bgColors.staticColor;
                     await timer(time);
@@ -49,15 +46,13 @@ const HeapSort = async (arr, sorting, updateArray, bgColors, timer, time) => {
                 await timer(time);
                 updateArray(array)
                 array = SwapElements(array, i, 2 * i + 2);
+                updateArray(array)
                 itemColoringForHeapSort(i, 2 * i + 2, bgColors.correctedColor, bgColors.correctedColor, array);
                 await timer(time);
                 updateArray(array)
                 itemColoringForHeapSort(i, 2 * i + 2, bgColors.staticColor, bgColors.staticColor, array);
                 await timer(time);
                 updateArray(array)
-                array = SwapElements(array, i, 2 * i + 2)
-                updateArray(array)
-
             } else {
                 itemColoringForHeapSort(i, 2 * i + 1, bgColors.correctedColor, bgColors.correctedColor, array);
                 updateArray(array)
@@ -76,16 +71,6 @@ const HeapSort = async (arr, sorting, updateArray, bgColors, timer, time) => {
             }
         }
 
-        if (arrayLength === 2) {
-            itemColoringForHeapSort(0, arrayLength - 1, bgColors.allCorrectedColor, bgColors.allCorrectedColor, array);
-            updateArray(array)
-            await timer(time);
-        } else {
-            itemColoringForHeapSort(0, arrayLength - 1, bgColors.staticColor, bgColors.allCorrectedColor, array);
-            updateArray(array)
-            await timer(time);
-        }
-
         itemColoringForHeapSort(0, arrayLength - 1, bgColors.wrongColor, bgColors.wrongColor, array);
         updateArray(array)
         await timer(time);
@@ -96,11 +81,25 @@ const HeapSort = async (arr, sorting, updateArray, bgColors, timer, time) => {
         itemColoringForHeapSort(0, arrayLength - 1, bgColors.correctedColor, bgColors.correctedColor, array);
         updateArray(array)
         await timer(time);
+
+        if (arrayLength === 2) {
+            itemColoringForHeapSort(0, arrayLength - 1, bgColors.allCorrectColor, bgColors.allCorrectColor, array);
+            updateArray(array)
+            await timer(time);
+        } else {
+            itemColoringForHeapSort(0, arrayLength - 1, bgColors.staticColor, bgColors.allCorrectColor, array);
+            updateArray(array)
+            await timer(time);
+        }
         
         arrayLength--;
     }
 
-    updateArray(array)
+    array.forEach(el => {
+        el.bgColor = bgColors.allCorrectColor
+    });
+
+    updateArray(array);
     sorting = false;
 }
 
