@@ -12,12 +12,10 @@ function Header({ theme, createArray, setSize, sortingAlgorithms, array, sorting
         if (sortingAlgorithm === "bubble") {
             sortingAlgorithms.BubbleSort(array, sorting, updateArray, bgColors, timer, time)
         } else if (sortingAlgorithm === "merge") {
-            updateArray(sortingAlgorithms.MergeSort(array))
             array.forEach(el => {
                 el.bgColor = bgColors.allCorrectColor
             });
-
-            updateArray(array);
+            updateArray(sortingAlgorithms.MergeSort(array))
             sorting = false
         } else if (sortingAlgorithm === "heap") {
             sortingAlgorithms.HeapSort(array, sorting, updateArray, bgColors, timer, time)
