@@ -1,21 +1,21 @@
 import ArrayElement from "../ArrayElement/ArrayElement";
 import "./body.scss";
 
-function Body({ array, width, theme, setTheme, bgColor }) {
+function Body({ array, width, theme, setTheme, changeSpeed }) {
     return (
         <section id="sorting_array_section" className={theme}>
             <div id="sorting_array_container" className={theme}>
                 {array.map((el, index) => {
                     if(array.length <= 30){
-                        return <ArrayElement key={index} num={el.rndNum} height={el.height} width={width} theme={theme} bgColor={bgColor} />
+                        return <ArrayElement key={index} num={el.rndNum} height={el.height} width={width} theme={theme} bgColor={el.bgColor} />
                     }else{
-                        return <ArrayElement key={index} num={""} height={el.height} width={width} theme={theme} bgColor={bgColor} />
+                        return <ArrayElement key={index} num={""} height={el.height} width={width} theme={theme} bgColor={el.bgColor} />
                     }
                 })}
             </div>
             <div id="change_sorting_speed">
                 <h3>Control Speed</h3>
-                <input type="range" name="" id="sorting_speed" min="1" max="500" step="1" defaultValue="30" />
+                <input onChange={e => {changeSpeed(e.target.value)}} type="range" name="" id="sorting_speed" min="1" max="500" step="1" defaultValue="30" />
             </div>
 
             <div className="creat_array_input_container">

@@ -1,6 +1,6 @@
 import SwapElements from "./SwapElements";
 
-const HeapSort = (arr, sorting, updateArray) => {
+const HeapSort = (arr, sorting, updateArray, bgColors) => {
     let array = arr
     let arrayLength = array.length;
 

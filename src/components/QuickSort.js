@@ -1,6 +1,6 @@
 import SwapElements from "./SwapElements";
 
-const QuickSort = (array, left, right, sorting, updateArray) => {
+const QuickSort = (array, left, right, bgColors) => {
 
     let index;
     if (array.length > 1) {

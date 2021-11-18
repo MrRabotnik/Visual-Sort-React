@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./header.scss";
 
-function Header({ theme, createArray, setSize, sortingAlgorithms, array, sorting, updateArray }) {
+function Header({ theme, createArray, setSize, sortingAlgorithms, array, sorting, updateArray, bgColors, timer, time }) {
 
     const [sortingAlgorithm, setSortingAlgorithm] = useState("bubble");
 
@@ -10,19 +10,19 @@ function Header({ theme, createArray, setSize, sortingAlgorithms, array, sorting
 
         sorting = true
         if (sortingAlgorithm === "bubble") {
-            sortingAlgorithms.BubbleSort(array, sorting, updateArray)
+            sortingAlgorithms.BubbleSort(array, sorting, updateArray, bgColors, timer, time)
         } else if (sortingAlgorithm === "merge") {
             updateArray(sortingAlgorithms.MergeSort(array))
             sorting = false
         } else if (sortingAlgorithm === "heap") {
-            sortingAlgorithms.HeapSort(array, sorting, updateArray)
+            sortingAlgorithms.HeapSort(array, sorting, updateArray, bgColors, timer, time)
         } else if (sortingAlgorithm === "quick") {
-            updateArray(sortingAlgorithms.QuickSort(array, 0, array.length - 1, sorting, updateArray))
+            updateArray(sortingAlgorithms.QuickSort(array, 0, array.length - 1, bgColors, timer, time))
             sorting = false
         } else if (sortingAlgorithm === "selection") {
-            sortingAlgorithms.SelectionSort(array, sorting, updateArray)
+            sortingAlgorithms.SelectionSort(array, sorting, updateArray, bgColors, timer, time)
         } else if (sortingAlgorithm === "insertion") {
-            sortingAlgorithms.InsertionSort(array, sorting, updateArray)
+            sortingAlgorithms.InsertionSort(array, sorting, updateArray, bgColors, timer, time)
         }
     }
 

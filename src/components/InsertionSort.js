@@ -1,6 +1,6 @@
 import SwapElements from "./SwapElements";
 
-const InsertionSort = (array, sorting, updateArray) => {
+const InsertionSort = (array, sorting, updateArray, bgColors) => {
     let arraySize = array.length
     for (let i = 1; i < arraySize; i++) {
         let currentTarget = i;

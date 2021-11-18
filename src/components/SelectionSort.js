@@ -1,6 +1,6 @@
 import SwapElements from "./SwapElements";
 
-const SelectionSort = (array, sorting, updateArray) => {
+const SelectionSort = (array, sorting, updateArray, bgColors) => {
     let shouldSwapIndex = 0;
     let currentRunMinimumIndex = 0
     let arraySize = array.length

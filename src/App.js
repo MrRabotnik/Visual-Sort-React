@@ -15,21 +15,20 @@ class App extends Component {
             array: [],
             arraySize: 7,
             elementWidth: 0,
-            sortingSpeedMax: 0,
             sorting: false,
-            time: this.sortingSpeedMax - "speed",
             theme: "theme_2",
-            bgColor: {
-                staticColor : "#5959ad",
-                checkingColor : "orange",
-                wrongColor : "crimson",
-                allCorrectColor : "green",
-                correctedColor : "yellowgreen"
+            bgColors: {
+                staticColor: "#5959ad",
+                checkingColor: "orange",
+                wrongColor: "crimson",
+                allCorrectColor: "green",
+                correctedColor: "yellowgreen"
             },
+            time: 30,
         };
     }
 
-    
+    sortingSpeedMax = 500;
     array_max_number_limit = 181;
     array_min_number_limit = 20;
     dom_item_height_multiplier = 90 / (this.array_max_number_limit + 20);
@@ -41,6 +40,8 @@ class App extends Component {
         InsertionSort,
         QuickSort
     };
+
+
 
     componentDidMount() {
         this.createArray();
@@ -55,6 +56,7 @@ class App extends Component {
             arr.push({
                 rndNum,
                 height: this.definingItemsHeight(rndNum),
+                bgColor: this.state.bgColors.staticColor
             });
         }
 
@@ -73,7 +75,7 @@ class App extends Component {
     }
 
     updateArray = arr => {
-        this.setState({array: arr});
+        this.setState({ array: arr });
     };
 
     setTheme = (theme) => {
@@ -89,6 +91,10 @@ class App extends Component {
         });
     };
 
+    changeSpeed = async (speed) => {
+        this.setState({ time: this.sortingSpeedMax - speed })
+    }
+
     render() {
         return (
             <React.Fragment>
@@ -99,16 +105,18 @@ class App extends Component {
                     sortingAlgorithms={this.sortingAlgorithms}
                     array={this.state.array}
                     sorting={this.state.sorting}
-                    appThis={this}
                     updateArray={this.updateArray}
+                    bgColors={this.state.bgColors}
+                    timer={this.state.timer}
+                    time={this.state.time}
                 />
                 <Body
                     array={this.state.array}
                     width={this.state.elementWidth}
                     theme={this.state.theme}
                     setTheme={this.setTheme}
-                    // sortingAlgorithms={this.sortingAlgorithms}
                     sorting={this.state.sorting}
+                    changeSpeed={this.changeSpeed}
                 />
             </React.Fragment>
         );
