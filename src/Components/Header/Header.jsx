@@ -76,6 +76,18 @@ function Header({ theme, createArray, setSize, sortingAlgorithms, array, updateA
                 el.bgColor = bgColors.allCorrectColor;
             });
             updateArray([...sortedArray]);
+        } else if (sortingAlgorithm === "shell") {
+            await sortingAlgorithms.ShellSort(array, updateArray, bgColors, timer, time, shouldStopSorting);
+        } else if (sortingAlgorithm === "comb") {
+            await sortingAlgorithms.CombSort(array, updateArray, bgColors, timer, time, shouldStopSorting);
+        } else if (sortingAlgorithm === "gnome") {
+            await sortingAlgorithms.GnomeSort(array, updateArray, bgColors, timer, time, shouldStopSorting);
+        } else if (sortingAlgorithm === "pancake") {
+            await sortingAlgorithms.PancakeSort(array, updateArray, bgColors, timer, time, shouldStopSorting);
+        } else if (sortingAlgorithm === "tim") {
+            await sortingAlgorithms.TimSort(array, updateArray, bgColors, timer, time, shouldStopSorting);
+        } else if (sortingAlgorithm === "cycle") {
+            await sortingAlgorithms.CycleSort(array, updateArray, bgColors, timer, time, shouldStopSorting);
         }
 
         setIsSorting(false);
@@ -172,6 +184,42 @@ function Header({ theme, createArray, setSize, sortingAlgorithms, array, updateA
                         value="bucket"
                     >
                         Bucket Sort
+                    </option>
+                    <option
+                        key="10"
+                        value="shell"
+                    >
+                        Shell Sort
+                    </option>
+                    <option
+                        key="11"
+                        value="comb"
+                    >
+                        Comb Sort
+                    </option>
+                    <option
+                        key="12"
+                        value="gnome"
+                    >
+                        Gnome Sort
+                    </option>
+                    <option
+                        key="13"
+                        value="pancake"
+                    >
+                        Pancake Sort
+                    </option>
+                    <option
+                        key="14"
+                        value="tim"
+                    >
+                        Tim Sort
+                    </option>
+                    <option
+                        key="15"
+                        value="cycle"
+                    >
+                        Cycle Sort
                     </option>
                 </select>
             </div>

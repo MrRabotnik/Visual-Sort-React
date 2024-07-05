@@ -10,6 +10,12 @@ import QuickSort from "./Sorts/QuickSort";
 import RadixSort from "./Sorts/RadixSort";
 import CountingSort from "./Sorts/CountingSort";
 import BucketSort from "./Sorts/BucketSort";
+import ShellSort from "./Sorts/ShellSort";
+import CombSort from "./Sorts/CombSort";
+import GnomeSort from "./Sorts/GnomeSort";
+import PancakeSort from "./Sorts/PancakeSort";
+import TimSort from "./Sorts/TimSort";
+import CycleSort from "./Sorts/CycleSort";
 
 const App = () => {
     const sortingSpeedMax = 500;
@@ -27,6 +33,12 @@ const App = () => {
         RadixSort,
         CountingSort,
         BucketSort,
+        ShellSort,
+        CombSort,
+        GnomeSort,
+        PancakeSort,
+        TimSort,
+        CycleSort,
     };
 
     const [array, setArray] = useState([]);
