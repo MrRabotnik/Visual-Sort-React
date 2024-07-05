@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import "./Header.scss";
+import "./header.scss";
 
 function Header({ theme, createArray, setSize, sortingAlgorithms, array, updateArray, bgColors, timer, time }) {
     const [sortingAlgorithm, setSortingAlgorithm] = useState("bubble");
