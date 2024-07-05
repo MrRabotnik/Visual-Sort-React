@@ -75,18 +75,7 @@ function Header({ theme, createArray, setSize, sortingAlgorithms, array, updateA
             });
             updateArray([...sortedArray]);
         } else if (sortingAlgorithm === "bucket") {
-            const sortedArray = await sortingAlgorithms.BucketSort(
-                array,
-                updateArray,
-                bgColors,
-                timer,
-                time,
-                shouldStopSorting
-            );
-            sortedArray.forEach((el) => {
-                el.bgColor = bgColors.allCorrectColor;
-            });
-            updateArray([...sortedArray]);
+            await sortingAlgorithms.BucketSort(array, updateArray, bgColors, timer, time, shouldStopSorting);
         } else if (sortingAlgorithm === "shell") {
             await sortingAlgorithms.ShellSort(array, updateArray, bgColors, timer, time, shouldStopSorting);
         } else if (sortingAlgorithm === "comb") {
