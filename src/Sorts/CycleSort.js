@@ -28,7 +28,7 @@ const CycleSort = async (arr, updateArray, bgColors, timer, timeRef) => {
         while (item.rndNum === arr[pos].rndNum) {
             arr[pos].bgColor = bgColors.checkingColor;
             updateArray([...arr]);
-            await timer(timeRef.current);
+            timer(timeRef.current);
 
             arr[pos].bgColor = bgColors.staticColor;
             updateArray([...arr]);
@@ -74,7 +74,7 @@ const CycleSort = async (arr, updateArray, bgColors, timer, timeRef) => {
                     pos++;
                     arr[i].bgColor = bgColors.checkingColor;
                     updateArray([...arr]);
-                    await timer(timeRef.current);
+                    timer(timeRef.current);
 
                     arr[i].bgColor = bgColors.staticColor;
                     updateArray([...arr]);
