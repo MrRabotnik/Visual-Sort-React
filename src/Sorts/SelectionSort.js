@@ -1,70 +1,122 @@
 import SwapElements from "../utils/SwapElements";
 
 const SelectionSort = async (array, updateArray, bgColors, timer, timeRef, shouldStopSortingRef) => {
-    let shouldSwapIndex = 0;
-    let currentRunMinimumIndex = 0;
     let arraySize = array.length;
 
-    while (shouldSwapIndex !== arraySize) {
-        for (let i = shouldSwapIndex + 1; i < arraySize; i++) {
+    for (let i = 0; i < arraySize - 1; i++) {
+        let minIndex = i;
+
+        // Set the color for the first element to be swapped with min
+        array[i].bgColor = bgColors.checkingColor;
+        updateArray([...array]);
+        await timer(timeRef.current);
+
+        for (let j = i + 1; j < arraySize; j++) {
             if (shouldStopSortingRef.current) return;
 
-            itemColoringForSelectionSort(i, bgColors.checkingColor, array);
-            await timer(timeRef.current);
-            updateArray(array);
-            if (array[i].rndNum < array[currentRunMinimumIndex].rndNum) {
-                if (currentRunMinimumIndex !== shouldSwapIndex) {
-                    itemColoringForSelectionSort(currentRunMinimumIndex, bgColors.staticColor, array);
-                    updateArray(array);
-                }
-                currentRunMinimumIndex = i;
-                itemColoringForSelectionSort(currentRunMinimumIndex, bgColors.checkingColor, array);
-                await timer(timeRef.current);
-                updateArray(array);
+            // Color the elements being compared
+            await itemColoringForSelectionSort(
+                minIndex,
+                j,
+                bgColors.checkingColor,
+                bgColors.checkingColor,
+                array,
+                updateArray,
+                timer,
+                timeRef
+            );
+
+            if (array[j].rndNum < array[minIndex].rndNum) {
+                // Reset the color of the previous minimum element
+                await itemColoringForSelectionSort(
+                    minIndex,
+                    j,
+                    bgColors.wrongColor,
+                    bgColors.wrongColor,
+                    array,
+                    updateArray,
+                    timer,
+                    timeRef
+                );
+
+                await itemColoringForSelectionSort(
+                    minIndex,
+                    j,
+                    bgColors.staticColor,
+                    bgColors.checkingColor,
+                    array,
+                    updateArray,
+                    timer,
+                    timeRef
+                );
+                minIndex = j;
             } else {
-                itemColoringForSelectionSort(i, bgColors.correctedColor, array);
-                await timer(timeRef.current);
-                updateArray(array);
-                itemColoringForSelectionSort(i, bgColors.staticColor, array);
-                await timer(timeRef.current);
-                updateArray(array);
+                await itemColoringForSelectionSort(
+                    minIndex,
+                    j,
+                    bgColors.correctedColor,
+                    bgColors.correctedColor,
+                    array,
+                    updateArray,
+                    timer,
+                    timeRef
+                );
+
+                await itemColoringForSelectionSort(
+                    minIndex,
+                    j,
+                    bgColors.checkingColor,
+                    bgColors.staticColor,
+                    array,
+                    updateArray,
+                    timer,
+                    timeRef
+                );
             }
         }
 
-        itemColoringForSelectionSort(shouldSwapIndex, bgColors.staticColor, array);
-        updateArray(array);
-        itemColoringForSelectionSort(currentRunMinimumIndex, bgColors.staticColor, array);
-        updateArray(array);
+        if (minIndex !== i) {
+            array = SwapElements(array, i, minIndex);
+
+            await itemColoringForSelectionSort(
+                i,
+                minIndex,
+                bgColors.correctedColor,
+                bgColors.correctedColor,
+                array,
+                updateArray,
+                timer,
+                timeRef
+            );
+
+            await itemColoringForSelectionSort(
+                i,
+                minIndex,
+                bgColors.allCorrectColor,
+                bgColors.staticColor,
+                array,
+                updateArray,
+                timer,
+                timeRef
+            );
+        }
+
+        array[i].bgColor = bgColors.allCorrectColor;
+        updateArray([...array]);
         await timer(timeRef.current);
-
-        array = SwapElements(array, shouldSwapIndex, currentRunMinimumIndex);
-        updateArray(array);
-
-        itemColoringForSelectionSort(shouldSwapIndex, bgColors.correctedColor, array);
-        updateArray(array);
-        itemColoringForSelectionSort(currentRunMinimumIndex, bgColors.correctedColor, array);
-        updateArray(array);
-        await timer(timeRef.current);
-
-        itemColoringForSelectionSort(currentRunMinimumIndex, bgColors.staticColor, array);
-        updateArray(array);
-        itemColoringForSelectionSort(shouldSwapIndex, bgColors.allCorrectedColor, array);
-        updateArray(array);
-        await timer(timeRef.current);
-
-        shouldSwapIndex++;
-        currentRunMinimumIndex = shouldSwapIndex;
     }
 
-    array.forEach((el) => {
-        el.bgColor = bgColors.allCorrectColor;
-    });
-
-    updateArray(array);
+    // Set the color for the last element
+    array[arraySize - 1].bgColor = bgColors.allCorrectColor;
+    updateArray([...array]);
+    await timer(timeRef.current);
 };
 
-function itemColoringForSelectionSort(index, color, array) {
-    array[index].bgColor = color;
+async function itemColoringForSelectionSort(i, j, c1, c2, array, updateArray, timer, timeRef) {
+    array[i].bgColor = c1;
+    array[j].bgColor = c2;
+    updateArray([...array]);
+    await timer(timeRef.current);
 }
 
 export default SelectionSort;

@@ -54,7 +54,7 @@ const App = () => {
         };
     }, []);
     const [time, setTime] = useState(100);
-    const timeRef = useRef(time); // Use useRef to keep track of time
+    const timeRef = useRef(time);
 
     useEffect(() => {
         let arr = [];
