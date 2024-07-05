@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import "./Header.scss";
 
 function Header({ theme, createArray, setSize, sortingAlgorithms, array, updateArray, bgColors, timer, time }) {
-    const [sortingAlgorithm, setSortingAlgorithm] = useState("cycle");
+    const [sortingAlgorithm, setSortingAlgorithm] = useState("bubble");
     const [isSorting, setIsSorting] = useState(false);
     const [shouldStopSorting, setShouldStopSorting] = useState(false);
     const shouldStopSortingRef = useRef(shouldStopSorting);
@@ -26,18 +26,7 @@ function Header({ theme, createArray, setSize, sortingAlgorithms, array, updateA
         if (sortingAlgorithm === "bubble") {
             await sortingAlgorithms.BubbleSort(array, updateArray, bgColors, timer, time, shouldStopSortingRef);
         } else if (sortingAlgorithm === "merge") {
-            const sortedArray = await sortingAlgorithms.MergeSort(
-                array,
-                updateArray,
-                bgColors,
-                timer,
-                time,
-                shouldStopSortingRef
-            );
-            sortedArray.forEach((el) => {
-                el.bgColor = bgColors.allCorrectColor;
-            });
-            updateArray([...sortedArray]);
+            await sortingAlgorithms.MergeSort(array, updateArray, bgColors, timer, time, shouldStopSortingRef);
         } else if (sortingAlgorithm === "heap") {
             await sortingAlgorithms.HeapSort(array, updateArray, bgColors, timer, time, shouldStopSortingRef);
         } else if (sortingAlgorithm === "quick") {
