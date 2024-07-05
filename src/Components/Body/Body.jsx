@@ -1,6 +1,6 @@
 import React from "react";
 import ArrayElement from "../ArrayElement/ArrayElement";
-import "./Body.scss";
+// import "./Body.scss";
 
 function Body({ array, width, changeSpeed }) {
     return (
