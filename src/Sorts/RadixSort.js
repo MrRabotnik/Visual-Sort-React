@@ -26,6 +26,7 @@ const RadixSort = async (array, updateArray, bgColors, timer, timeRef) => {
             array[i].bgColor = bgColors.checkingColor;
             updateArray([...array]);
             await timer(timeRef.current);
+
             output[count[index] - 1] = array[i];
             count[index]--;
         }
@@ -33,6 +34,10 @@ const RadixSort = async (array, updateArray, bgColors, timer, timeRef) => {
         for (let i = 0; i < n; i++) {
             array[i] = output[i];
             array[i].bgColor = bgColors.correctedColor;
+            updateArray([...array]);
+            await timer(timeRef.current);
+
+            array[i].bgColor = bgColors.staticColor;
             updateArray([...array]);
             await timer(timeRef.current);
         }

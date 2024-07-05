@@ -9,6 +9,11 @@ const GnomeSort = async (array, updateArray, bgColors, timer, timeRef) => {
         if (array[index].rndNum >= array[index - 1].rndNum) {
             index++;
         } else {
+            array[index].bgColor = bgColors.checkingColor;
+            array[index - 1].bgColor = bgColors.checkingColor;
+            updateArray([...array]);
+            await timer(timeRef.current);
+
             array[index].bgColor = bgColors.wrongColor;
             array[index - 1].bgColor = bgColors.wrongColor;
             updateArray([...array]);
@@ -18,6 +23,11 @@ const GnomeSort = async (array, updateArray, bgColors, timer, timeRef) => {
 
             array[index].bgColor = bgColors.correctedColor;
             array[index - 1].bgColor = bgColors.correctedColor;
+            updateArray([...array]);
+            await timer(timeRef.current);
+
+            array[index].bgColor = bgColors.staticColor;
+            array[index - 1].bgColor = bgColors.staticColor;
             updateArray([...array]);
             await timer(timeRef.current);
 

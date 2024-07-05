@@ -4,10 +4,18 @@ const insertionSort = async (arr, left, right, updateArray, bgColors, timer, tim
     for (let i = left + 1; i <= right; i++) {
         let temp = arr[i];
         let j = i - 1;
+        updateArray([...arr]);
+        await timer(timeRef.current);
+
         while (j >= left && arr[j].rndNum > temp.rndNum) {
             arr[j + 1] = arr[j];
-            arr[j].bgColor = bgColors.wrongColor;
-            arr[j + 1].bgColor = bgColors.wrongColor;
+            arr[j].bgColor = bgColors.checkingColor;
+            arr[j + 1].bgColor = bgColors.checkingColor;
+            updateArray([...arr]);
+            await timer(timeRef.current);
+
+            arr[j].bgColor = bgColors.staticColor;
+            arr[j + 1].bgColor = bgColors.staticColor;
             updateArray([...arr]);
             await timer(timeRef.current);
 
@@ -17,6 +25,12 @@ const insertionSort = async (arr, left, right, updateArray, bgColors, timer, tim
         arr[j + 1].bgColor = bgColors.correctedColor;
         updateArray([...arr]);
         await timer(timeRef.current);
+
+        // Reset colors after comparison
+        for (let k = left; k <= right; k++) {
+            if (k !== j + 1) arr[k].bgColor = bgColors.staticColor;
+        }
+        updateArray([...arr]);
     }
 };
 
@@ -65,6 +79,12 @@ const merge = async (arr, l, m, r, updateArray, bgColors, timer, timeRef) => {
         updateArray([...arr]);
         await timer(timeRef.current);
     }
+
+    // Reset colors after merging
+    for (let x = l; x <= r; x++) {
+        arr[x].bgColor = bgColors.staticColor;
+    }
+    updateArray([...arr]);
 };
 
 const TimSort = async (arr, updateArray, bgColors, timer, timeRef) => {

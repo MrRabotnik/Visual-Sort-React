@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import "./Header.scss";
 
 function Header({ theme, createArray, setSize, sortingAlgorithms, array, updateArray, bgColors, timer, time }) {
-    const [sortingAlgorithm, setSortingAlgorithm] = useState("bubble");
+    const [sortingAlgorithm, setSortingAlgorithm] = useState("cycle");
     const [isSorting, setIsSorting] = useState(false);
     const [shouldStopSorting, setShouldStopSorting] = useState(false);
     const shouldStopSortingRef = useRef(shouldStopSorting);
@@ -60,9 +60,31 @@ function Header({ theme, createArray, setSize, sortingAlgorithms, array, updateA
         } else if (sortingAlgorithm === "insertion") {
             await sortingAlgorithms.InsertionSort(array, updateArray, bgColors, timer, time, shouldStopSorting);
         } else if (sortingAlgorithm === "radix") {
-            await sortingAlgorithms.RadixSort(array, updateArray, bgColors, timer, time, shouldStopSorting);
+            const sortedArray = await sortingAlgorithms.RadixSort(
+                array,
+                updateArray,
+                bgColors,
+                timer,
+                time,
+                shouldStopSorting
+            );
+            sortedArray.forEach((el) => {
+                el.bgColor = bgColors.allCorrectColor;
+            });
+            updateArray([...sortedArray]);
         } else if (sortingAlgorithm === "counting") {
-            await sortingAlgorithms.CountingSort(array, updateArray, bgColors, timer, time, shouldStopSorting);
+            const sortedArray = await sortingAlgorithms.CountingSort(
+                array,
+                updateArray,
+                bgColors,
+                timer,
+                time,
+                shouldStopSorting
+            );
+            sortedArray.forEach((el) => {
+                el.bgColor = bgColors.allCorrectColor;
+            });
+            updateArray([...sortedArray]);
         } else if (sortingAlgorithm === "bucket") {
             const sortedArray = await sortingAlgorithms.BucketSort(
                 array,
@@ -113,7 +135,7 @@ function Header({ theme, createArray, setSize, sortingAlgorithms, array, updateA
                     disabled={isSorting}
                     id="array_range"
                     min="10"
-                    max="200"
+                    max="400"
                     step="1"
                     defaultValue="30"
                     onChange={(e) => setSize(e.target.value)}

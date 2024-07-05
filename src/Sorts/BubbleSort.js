@@ -36,7 +36,6 @@ const BubbleSort = async (array, updateArray, bgColors, timer, timeRef, shouldSt
             } else {
                 itemColoringForBubbleSort(i, bgColors.staticColor, bgColors.staticColor, array);
                 updateArray([...array]);
-                await timer(timeRef.current);
             }
         }
 

@@ -14,6 +14,10 @@ const ShellSort = async (array, updateArray, bgColors, timer, timeRef) => {
             array[j].bgColor = bgColors.correctedColor;
             updateArray([...array]);
             await timer(timeRef.current);
+
+            array[j].bgColor = bgColors.staticColor;
+            updateArray([...array]);
+            await timer(timeRef.current);
         }
     }
     array.forEach((el) => (el.bgColor = bgColors.allCorrectColor));

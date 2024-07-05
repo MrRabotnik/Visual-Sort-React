@@ -22,11 +22,15 @@ const CountingSort = async (array, updateArray, bgColors, timer, timeRef) => {
         array[i].bgColor = bgColors.correctedColor;
         updateArray([...array]);
         await timer(timeRef.current);
+
+        array[i].bgColor = bgColors.staticColor;
+        updateArray([...array]);
+        await timer(timeRef.current);
     }
 
     for (let i = 0; i < array.length; i++) {
         array[i] = output[i];
-        array[i].bgColor = bgColors.staticColor;
+        array[i].bgColor = bgColors.allCorrectedColor;
         updateArray([...array]);
         await timer(timeRef.current);
     }
