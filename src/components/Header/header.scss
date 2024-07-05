@@ -1,0 +1,167 @@
+@import "../../utils/constants.scss";
+
+header {
+    height: $footer-header-height;
+    display: flex;
+    align-items: center;
+    background: $background-color-t2;
+    box-shadow: 0 0 2vw $box-shadow-color-t2;
+
+    #generate_new_array {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 20%;
+        height: 100%;
+        border-right: 0.1vw double $header-border-color-t2;
+        background-color: $select-bg-color-t2;
+
+        h3 {
+            margin: 0;
+
+            &:hover {
+                color: $button-hover-color;
+                cursor: pointer;
+            }
+        }
+    }
+
+    #change_array_size_and_speed {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 30%;
+        height: 100%;
+        border-right: 0.1vw double $header-border-color-t2;
+        background-color: $select-bg-color-t2;
+
+        input {
+            margin-left: 1vw;
+            width: 40%;
+        }
+    }
+
+    #sorting_algorithms {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 30%;
+        height: 100%;
+        border-right: 0.1vw double $header-border-color-t2;
+        background-color: $select-bg-color-t2;
+
+        #sorting_algorithm_select {
+            margin-left: 1vw;
+            font-size: $h4-font-size;
+            outline: none;
+            padding: 0.5vw;
+        }
+    }
+
+    #start_sort {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 20%;
+        height: 100%;
+        background-color: $select-bg-color-t2;
+
+        &:hover {
+            color: $button-hover-color;
+            cursor: pointer;
+        }
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    h3 {
+        font-size: 2vw;
+    }
+    header {
+        flex-wrap: wrap;
+        height: 3 * $footer-header-height;
+
+        #generate_new_array {
+            width: calc(50% - 0.3vw);
+            height: 50%;
+        }
+
+        #change_array_size_and_speed {
+            width: calc(50% - 0.3vw);
+            height: 50%;
+        }
+
+        #sorting_algorithms {
+            width: calc(50% - 0.3vw);
+            height: 50%;
+
+            #sorting_algorithm_select {
+                margin-left: 2vw;
+                font-size: 1.8vw;
+            }
+        }
+
+        #start_sort {
+            width: calc(50% - 0.3vw);
+            height: 50%;
+        }
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    h3 {
+        font-size: 2.5vw;
+    }
+
+    header {
+        flex-wrap: wrap;
+        height: 7 * $footer-header-height;
+
+        #generate_new_array {
+            width: 100%;
+            border-right: 0;
+            height: 25%;
+        }
+
+        #change_array_size_and_speed {
+            width: 100%;
+            border-right: 0;
+            height: 25%;
+        }
+
+        #sorting_algorithms {
+            width: 100%;
+            border-right: 0;
+            height: 25%;
+            border-right-color: red;
+
+            #sorting_algorithm_select {
+                margin-left: 2vw;
+                font-size: 1.8vw;
+            }
+        }
+
+        #start_sort {
+            width: 100%;
+            border-right: 0;
+            height: 25%;
+            border-right-color: red;
+        }
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    h3 {
+        font-size: 3vw;
+    }
+
+    header {
+        height: 10 * $footer-header-height;
+
+        #sorting_algorithms {
+            #sorting_algorithm_select {
+                font-size: 2.5vw;
+            }
+        }
+    }
+}
