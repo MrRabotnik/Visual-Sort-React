@@ -45,8 +45,18 @@ const App = () => {
     const timeRef = useRef(time); // Use useRef to keep track of time
 
     useEffect(() => {
-        generateArray();
-    }, [arraySize]);
+        let arr = [];
+        for (let i = arraySize; i > 0; i--) {
+            let rndNum = Math.floor(Math.random() * array_max_number_limit) + array_min_number_limit;
+            arr.push({
+                rndNum,
+                height: dom_item_height_multiplier * rndNum + "%",
+                bgColor: bgColors.staticColor,
+            });
+        }
+        setElementWidth(100 / arraySize + "%");
+        setArray(arr);
+    }, [arraySize, bgColors.staticColor, dom_item_height_multiplier]);
 
     useEffect(() => {
         timeRef.current = time;
