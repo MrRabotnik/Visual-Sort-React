@@ -11,7 +11,7 @@ export const playBeepSound = (index) => {
         .then((buffer) => audioContext.decodeAudioData(buffer))
         .then((audioBuffer) => {
             audioSource.buffer = audioBuffer;
-            const pitchFactor = index / 2 + 1; // Adjust pitch based on index
+            const pitchFactor = index / 5 + 1; // Adjust pitch based on index
             audioSource.playbackRate.value = pitchFactor;
 
             // Adjust volume (reduce by half)
