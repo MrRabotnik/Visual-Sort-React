@@ -1,3 +1,5 @@
+import { playBeepSound } from "../utils/playBeep";
+
 const CycleSort = async (arr, updateArray, bgColors, timer, timeRef) => {
     let n = arr.length;
 
@@ -7,6 +9,8 @@ const CycleSort = async (arr, updateArray, bgColors, timer, timeRef) => {
 
         // Find position where we put the current item
         for (let i = cycleStart + 1; i < n; i++) {
+            playBeepSound(i);
+
             if (arr[i].rndNum < item.rndNum) {
                 arr[i].bgColor = bgColors.checkingColor;
                 updateArray([...arr]);
@@ -42,6 +46,8 @@ const CycleSort = async (arr, updateArray, bgColors, timer, timeRef) => {
             item = arr[pos];
             arr[pos] = temp;
 
+            playBeepSound(pos);
+
             arr[cycleStart].bgColor = bgColors.checkingColor;
             arr[pos].bgColor = bgColors.checkingColor;
             updateArray([...arr]);
@@ -70,6 +76,8 @@ const CycleSort = async (arr, updateArray, bgColors, timer, timeRef) => {
 
             // Find position where we put the current item
             for (let i = cycleStart + 1; i < n; i++) {
+                playBeepSound(i);
+
                 if (arr[i].rndNum < item.rndNum) {
                     pos++;
                     arr[i].bgColor = bgColors.checkingColor;

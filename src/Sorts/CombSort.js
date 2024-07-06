@@ -1,3 +1,5 @@
+import { playBeepSound } from "../utils/playBeep";
+
 const CombSort = async (array, updateArray, bgColors, timer, timeRef) => {
     let n = array.length;
     let gap = n;
@@ -14,6 +16,8 @@ const CombSort = async (array, updateArray, bgColors, timer, timeRef) => {
                 array[i + gap].bgColor = bgColors.wrongColor;
                 updateArray([...array]);
                 await timer(timeRef.current);
+
+                playBeepSound(i);
 
                 [array[i], array[i + gap]] = [array[i + gap], array[i]];
 

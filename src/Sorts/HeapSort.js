@@ -1,3 +1,4 @@
+import { playBeepSound } from "../utils/playBeep";
 import SwapElements from "../utils/SwapElements";
 
 const HeapSort = async (arr, updateArray, bgColors, timer, timeRef, shouldStopSortingRef) => {
@@ -31,6 +32,9 @@ const HeapSort = async (arr, updateArray, bgColors, timer, timeRef, shouldStopSo
                 await timer(timeRef.current);
                 updateArray(array);
                 array = SwapElements(array, i, 2 * i + 1);
+
+                playBeepSound(i);
+
                 updateArray(array);
                 itemColoringForHeapSort(i, 2 * i + 1, bgColors.correctedColor, bgColors.correctedColor, array);
                 await timer(timeRef.current);
@@ -50,6 +54,9 @@ const HeapSort = async (arr, updateArray, bgColors, timer, timeRef, shouldStopSo
                 await timer(timeRef.current);
                 updateArray(array);
                 array = SwapElements(array, i, 2 * i + 2);
+
+                playBeepSound(i);
+
                 updateArray(array);
                 itemColoringForHeapSort(i, 2 * i + 2, bgColors.correctedColor, bgColors.correctedColor, array);
                 await timer(timeRef.current);

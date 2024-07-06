@@ -1,3 +1,4 @@
+import { playBeepSound } from "../utils/playBeep";
 import SwapElements from "../utils/SwapElements";
 
 const InsertionSort = async (array, updateArray, bgColors, timer, timeRef, shouldStopSortingRef) => {
@@ -26,6 +27,9 @@ const InsertionSort = async (array, updateArray, bgColors, timer, timeRef, shoul
                 updateArray(array);
                 await timer(timeRef.current);
                 array = SwapElements(array, currentTarget - 1, currentTarget);
+
+                playBeepSound(currentTarget);
+
                 updateArray(array);
                 itemColoringForInsertionSort(
                     currentTarget - 1,

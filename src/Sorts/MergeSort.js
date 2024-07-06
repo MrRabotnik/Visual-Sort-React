@@ -1,3 +1,5 @@
+import { playBeepSound } from "../utils/playBeep";
+
 const MergeSort = async (array, updateArray, bgColors, timer, timeRef) => {
     // Helper function to perform merge sort
     const mergeSortHelper = async (array, start, end) => {
@@ -25,6 +27,7 @@ const MergeSort = async (array, updateArray, bgColors, timer, timeRef) => {
 
         // Merge left and right arrays into array[start...end]
         while (leftIndex < leftArray.length && rightIndex < rightArray.length) {
+            playBeepSound(leftIndex);
             if (leftArray[leftIndex].rndNum <= rightArray[rightIndex].rndNum) {
                 array[mergeIndex++] = leftArray[leftIndex];
                 leftArray[leftIndex].bgColor = bgColors.checkingColor;
@@ -50,6 +53,8 @@ const MergeSort = async (array, updateArray, bgColors, timer, timeRef) => {
 
         // Copy remaining elements of leftArray, if any
         while (leftIndex < leftArray.length) {
+            playBeepSound(leftIndex);
+
             array[mergeIndex] = leftArray[leftIndex];
             array[mergeIndex].bgColor = bgColors.checkingColor;
             updateArray([...array]);
@@ -60,6 +65,7 @@ const MergeSort = async (array, updateArray, bgColors, timer, timeRef) => {
 
         // Copy remaining elements of rightArray, if any
         while (rightIndex < rightArray.length) {
+            playBeepSound(rightIndex);
             array[mergeIndex] = rightArray[rightIndex];
             array[mergeIndex].bgColor = bgColors.checkingColor;
             updateArray([...array]);

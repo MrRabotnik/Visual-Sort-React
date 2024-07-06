@@ -1,3 +1,5 @@
+import { playBeepSound } from "../utils/playBeep";
+
 const GnomeSort = async (array, updateArray, bgColors, timer, timeRef) => {
     let n = array.length;
     let index = 0;
@@ -20,6 +22,8 @@ const GnomeSort = async (array, updateArray, bgColors, timer, timeRef) => {
             await timer(timeRef.current);
 
             [array[index], array[index - 1]] = [array[index - 1], array[index]];
+
+            playBeepSound(index);
 
             array[index].bgColor = bgColors.correctedColor;
             array[index - 1].bgColor = bgColors.correctedColor;

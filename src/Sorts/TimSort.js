@@ -1,3 +1,5 @@
+import { playBeepSound } from "../utils/playBeep";
+
 const RUN = 32;
 
 const insertionSort = async (arr, left, right, updateArray, bgColors, timer, timeRef) => {
@@ -8,6 +10,8 @@ const insertionSort = async (arr, left, right, updateArray, bgColors, timer, tim
         await timer(timeRef.current);
 
         while (j >= left && arr[j].rndNum > temp.rndNum) {
+            playBeepSound(j);
+
             arr[j + 1] = arr[j];
             arr[j].bgColor = bgColors.checkingColor;
             arr[j + 1].bgColor = bgColors.checkingColor;
@@ -63,6 +67,7 @@ const merge = async (arr, l, m, r, updateArray, bgColors, timer, timeRef) => {
     }
 
     while (i < len1) {
+        playBeepSound(i);
         arr[k] = left[i];
         left[i].bgColor = bgColors.correctedColor;
         i++;
@@ -72,6 +77,7 @@ const merge = async (arr, l, m, r, updateArray, bgColors, timer, timeRef) => {
     }
 
     while (j < len2) {
+        playBeepSound(j);
         arr[k] = right[j];
         right[j].bgColor = bgColors.correctedColor;
         j++;

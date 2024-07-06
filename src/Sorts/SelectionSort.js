@@ -1,3 +1,4 @@
+import { playBeepSound } from "../utils/playBeep";
 import SwapElements from "../utils/SwapElements";
 
 const SelectionSort = async (array, updateArray, bgColors, timer, timeRef, shouldStopSortingRef) => {
@@ -49,6 +50,9 @@ const SelectionSort = async (array, updateArray, bgColors, timer, timeRef, shoul
                     timer,
                     timeRef
                 );
+
+                playBeepSound(j);
+
                 minIndex = j;
             } else {
                 await itemColoringForSelectionSort(
@@ -77,6 +81,8 @@ const SelectionSort = async (array, updateArray, bgColors, timer, timeRef, shoul
 
         if (minIndex !== i) {
             array = SwapElements(array, i, minIndex);
+
+            playBeepSound(i);
 
             await itemColoringForSelectionSort(
                 i,

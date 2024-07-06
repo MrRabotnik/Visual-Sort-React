@@ -1,3 +1,5 @@
+import { playBeepSound } from "../utils/playBeep";
+
 const ShellSort = async (array, updateArray, bgColors, timer, timeRef) => {
     let n = array.length;
     for (let gap = Math.floor(n / 2); gap > 0; gap = Math.floor(gap / 2)) {
@@ -5,6 +7,7 @@ const ShellSort = async (array, updateArray, bgColors, timer, timeRef) => {
             let temp = array[i];
             let j;
             for (j = i; j >= gap && array[j - gap].rndNum > temp.rndNum; j -= gap) {
+                playBeepSound(j);
                 array[j] = array[j - gap];
                 array[j].bgColor = bgColors.checkingColor;
                 updateArray([...array]);

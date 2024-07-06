@@ -25,7 +25,7 @@ function Body({ array, width, changeSpeed }) {
                     min="1"
                     max="500"
                     step="1"
-                    defaultValue="400"
+                    defaultValue="450"
                     onChange={(e) => changeSpeed(e.target.value)}
                 />
             </div>

@@ -1,3 +1,5 @@
+import { playBeepSound } from "../utils/playBeep";
+
 const BucketSort = async (array, updateArray, bgColors, timer, timeRef) => {
     const n = array.length;
     const maxVal = Math.max(...array.map((el) => el.rndNum));
@@ -12,6 +14,8 @@ const BucketSort = async (array, updateArray, bgColors, timer, timeRef) => {
         const bucketIndex = Math.floor((element.rndNum / maxVal) * (bucketSize - 1));
         buckets[bucketIndex].push(element);
 
+        playBeepSound(bucketIndex);
+
         // Visualize the placement into a bucket
         array[i].bgColor = bgColors.checkingColor;
         updateArray([...array]);
@@ -25,6 +29,8 @@ const BucketSort = async (array, updateArray, bgColors, timer, timeRef) => {
     // Sort each bucket using a stable sorting algorithm (e.g., Insertion Sort)
     for (let i = 0; i < bucketSize; i++) {
         if (buckets[i].length > 1) {
+            playBeepSound(i);
+
             await InsertionSort(buckets[i], array, updateArray, bgColors, timer, timeRef);
         }
     }
@@ -64,6 +70,8 @@ const InsertionSort = async (bucket, array, updateArray, bgColors, timer, timeRe
         while (j >= 0 && bucket[j].rndNum > current.rndNum) {
             bucket[j + 1] = bucket[j];
             const num = j;
+
+            playBeepSound(j);
 
             // Visualize the swapping
             const swapIndex = array.findIndex((el, index) => el === bucket[num + 1] && index <= originalIndex);

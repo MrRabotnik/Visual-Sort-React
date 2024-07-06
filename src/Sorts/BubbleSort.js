@@ -1,4 +1,5 @@
 import SwapElements from "../utils/SwapElements";
+import { playBeepSound } from "../utils/playBeep";
 
 const BubbleSort = async (array, updateArray, bgColors, timer, timeRef, shouldStopSortingRef) => {
     let bubbleSorted = false;
@@ -19,6 +20,8 @@ const BubbleSort = async (array, updateArray, bgColors, timer, timeRef, shouldSt
 
                 allTrue = false;
                 array = SwapElements(array, i, i + 1);
+
+                playBeepSound(i);
 
                 itemColoringForBubbleSort(i, bgColors.correctedColor, bgColors.correctedColor, array);
                 updateArray([...array]);

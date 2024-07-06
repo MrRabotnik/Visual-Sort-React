@@ -1,4 +1,5 @@
 import SwapElements from "../utils/SwapElements";
+import { playBeepSound } from "../utils/playBeep";
 
 const QuickSort = async (array, left, right, updateArray, bgColors, timer, timeRef, shouldStopSortingRef) => {
     let index;
@@ -24,6 +25,8 @@ const partition = async (array, left, right, updateArray, bgColors, timer, timeR
         if (shouldStopSortingRef.current) return;
 
         while (array[i].rndNum < pivot) {
+            playBeepSound(i);
+
             itemColoringForQuickSort(i, bgColors.checkingColor, array);
             updateArray([...array]);
             await timer(timeRef.current);
@@ -34,6 +37,8 @@ const partition = async (array, left, right, updateArray, bgColors, timer, timeR
             i++;
         }
         while (array[j].rndNum > pivot) {
+            playBeepSound(i);
+
             itemColoringForQuickSort(j, bgColors.checkingColor, array);
             updateArray([...array]);
             await timer(timeRef.current);

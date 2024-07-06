@@ -1,3 +1,5 @@
+import { playBeepSound } from "../utils/playBeep";
+
 const RadixSort = async (array, updateArray, bgColors, timer, timeRef) => {
     const getMax = () => {
         let max = array[0].rndNum;
@@ -22,6 +24,8 @@ const RadixSort = async (array, updateArray, bgColors, timer, timeRef) => {
         }
 
         for (let i = n - 1; i >= 0; i--) {
+            playBeepSound(i);
+
             let index = Math.floor(array[i].rndNum / exp) % 10;
             array[i].bgColor = bgColors.checkingColor;
             updateArray([...array]);
@@ -36,6 +40,8 @@ const RadixSort = async (array, updateArray, bgColors, timer, timeRef) => {
             array[i].bgColor = bgColors.correctedColor;
             updateArray([...array]);
             await timer(timeRef.current);
+
+            playBeepSound(i);
 
             array[i].bgColor = bgColors.staticColor;
             updateArray([...array]);

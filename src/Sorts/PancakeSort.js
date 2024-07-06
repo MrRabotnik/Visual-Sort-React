@@ -1,8 +1,12 @@
+import { playBeepSound } from "../utils/playBeep";
+
 const PancakeSort = async (array, updateArray, bgColors, timer, timeRef, shouldStopSortingRef) => {
     const flip = async (arr, i) => {
         let start = 0;
         while (start < i) {
             if (shouldStopSortingRef.current) return;
+
+            playBeepSound(start);
 
             // Color the elements being flipped
             itemColoringForPancakeSort(start, i, bgColors.checkingColor, bgColors.checkingColor, arr);
@@ -42,6 +46,8 @@ const PancakeSort = async (array, updateArray, bgColors, timer, timeRef, shouldS
             itemColoringForPancakeSort(mi, i, bgColors.checkingColor, bgColors.checkingColor, array);
             updateArray([...array]);
             await timer(timeRef.current);
+
+            playBeepSound(i);
 
             if (array[i].rndNum > array[mi].rndNum) {
                 // Reset the previous max element's color
